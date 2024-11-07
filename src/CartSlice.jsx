@@ -16,7 +16,7 @@ export const CartSlice = createSlice({
         }
     },
     removeItem: (state, action) => {
-        state.items = state.items.filter(item => item.name !== action.payload);
+        state.items = state.items.filter(item => item.name !== action.payload.name);
     },
     updateQuantity: (state, action) => {
         const { name, quantity } = action.payload;
@@ -29,5 +29,7 @@ export const CartSlice = createSlice({
 });
 
 export const { addItem, removeItem, updateQuantity } = CartSlice.actions;
+
+export const selectCartItems = state => state.cart.items;
 
 export default CartSlice.reducer;
